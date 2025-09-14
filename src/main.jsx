@@ -6,6 +6,10 @@ import { Provider } from 'react-redux'
 import { persistor, store } from './app/store.js'
 import { PersistGate } from 'redux-persist/lib/integration/react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Login } from './pages/login/Login.jsx'
+import { Users } from './pages/users/Users.jsx'
+import { ProtectedRoute } from './features/auth/ProtectedRoute.jsx'
+
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -14,7 +18,12 @@ createRoot(document.getElementById('root')).render(
         <BrowserRouter>
         <Routes>
           <Route path='/' element={<App />}>
-            
+            <Route index element={<Login />} />
+            <Route path='/users' element={
+              <ProtectedRoute>
+                  <Users />
+              </ProtectedRoute>
+            } />
           </Route>
         </Routes>
         </BrowserRouter>
