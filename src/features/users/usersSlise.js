@@ -4,31 +4,31 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
   list: [
     {
-      "id": 1,
+      "id": '1',
       "login": "alex123",
       "password": "qwertyPass1!",
       "email": "alex123@example.com"
     },
     {
-      "id": 2,
+      "id": '2',
       "login": "maria_k",
       "password": "securePass22$",
       "email": "maria.k@example.com"
     },
     {
-      "id": 3,
+      "id": '3',
       "login": "john_doe",
       "password": "john2025!@#",
       "email": "john.doe@example.com"
     },
     {
-      "id": 4,
+      "id": '4',
       "login": "irina89",
       "password": "IrinaPass_89",
       "email": "irina89@example.com"
     },
     {
-      "id": 5,
+      "id": '5',
       "login": "maxDev",
       "password": "MaxDev#2025",
       "email": "max.dev@example.com"

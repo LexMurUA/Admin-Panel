@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 
 const initialState = {
-  list: [{id:1, login: 1, password: 1, email: '1@gmail.com' },]
+  list: [{id:1, login: '1', password: '1', email: '1@gmail.com' },]
 }
 
 export const adminsSlise = createSlice({

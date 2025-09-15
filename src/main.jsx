@@ -9,6 +9,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Login } from './pages/login/Login.jsx'
 import { Users } from './pages/users/Users.jsx'
 import { ProtectedRoute } from './features/auth/ProtectedRoute.jsx'
+import { User } from './pages/User/User.jsx'
+
 
 
 createRoot(document.getElementById('root')).render(
@@ -19,11 +21,8 @@ createRoot(document.getElementById('root')).render(
         <Routes>
           <Route path='/' element={<App />}>
             <Route index element={<Login />} />
-            <Route path='/users' element={
-              <ProtectedRoute>
-                  <Users />
-              </ProtectedRoute>
-            } />
+            <Route path='/users' element={<ProtectedRoute><Users /></ProtectedRoute>} />
+              <Route path='/users/:id' element={<ProtectedRoute><User /> </ProtectedRoute>} />
           </Route>
         </Routes>
         </BrowserRouter>
