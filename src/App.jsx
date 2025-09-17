@@ -16,6 +16,7 @@ function App() {
         <Outlet/>
       </Main>
      <Footer />
+     
     </>
   )
 }

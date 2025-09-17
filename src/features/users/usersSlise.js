@@ -42,10 +42,18 @@ export const usersSlice = createSlice({
   reducers: {
     addToUsers: (state, action) => {
       state.list.push(action.payload)
+    },
+    changeUser: (state,action)=> {
+      const {id,login,password,email} = action.payload
+      const user = state.list.find(user=>user.id === id);
+       if (user.login === login && user.password === password && user.email) return
+      user.login = login;
+      user.password = password;
+      user.email === email
     }
   }
 })
 
-export const { addToUsers } = usersSlice.actions;
+export const { addToUsers,changeUser } = usersSlice.actions;
 
 export default usersSlice.reducer
