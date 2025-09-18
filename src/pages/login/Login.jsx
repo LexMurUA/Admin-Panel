@@ -1,7 +1,7 @@
 import './Login.scss'
 import { Input, Button } from '@mui/joy'
 import { useForm } from 'react-hook-form'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { isAuth } from '../../features/auth/authSlice'
@@ -15,12 +15,17 @@ export const Login = () => {
   const navigate = useNavigate()
   const [message, setMessage] = useState(null)
   
- if (authToken) navigate('/users')
+
+
+
+  useEffect(() => {
+    if (authToken) {
+      navigate('/users');
+    }
+  }, [authToken, navigate]);
 
   const onSubmit = (data) => {
     const { login, password } = data
-    console.log(list);
-    console.log(authToken);
     
     const user = list.find(admin=>admin.login === login && admin.password ===password && (admin))
     if (user) {
