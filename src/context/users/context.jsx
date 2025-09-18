@@ -1,20 +1,24 @@
 import { createContext, useContext, useState } from "react";
-
+import { FormProvider, useForm } from 'react-hook-form';
 
 const usersContext = createContext(null)
 
-export const UsersContextProvider =({children})=>{
+export const UsersContextProvider = ({ children }) => {
     const [change, setChange] = useState(false)
-    const [currentUser,setCurrentUser] = useState(null)
+    const [currentUser, setCurrentUser] = useState(null)
+    const methodsAddUser = useForm()
 
-
-    return(
-        <usersContext.Provider value={{change,setChange,currentUser,setCurrentUser}}>{children}</usersContext.Provider>
+    return (
+        <usersContext.Provider value={{ change, setChange, currentUser, setCurrentUser, methodsAddUser }}>
+            <FormProvider {...methodsAddUser}>
+                {children}
+            </FormProvider >
+        </usersContext.Provider>
     )
 }
 
-export const UseUsersContext = ()=>{
+export const UseUsersContext = () => {
     const context = useContext(usersContext)
     if (context === null) throw new Error("useUsersContext must be used within a UsersContextProvider");
-        return context
+    return context
 }

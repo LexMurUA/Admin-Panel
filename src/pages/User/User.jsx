@@ -2,15 +2,13 @@ import { Table } from '@mui/joy/';
 import { useParams } from 'react-router-dom';
 import { UserTrView } from '../../components/User/UserTrView';
 import { useDispatch, useSelector } from 'react-redux';
-import { FormProvider, useForm } from 'react-hook-form';
 import { changeUser } from '../../features/users/usersSlise';
 import { UseUsersContext } from '../../context/users/context';
 
 export const User = () => {
-  const {change,setChange,currentUser,setCurrentUser} = UseUsersContext()
+  const { change, setChange, currentUser, setCurrentUser, methodsAddUser } = UseUsersContext()
   
   const dispatch = useDispatch()
-  const methodsAddUser = useForm()
   const { list } = useSelector(state => state.users)
   const { id } = useParams()
  
@@ -25,7 +23,6 @@ export const User = () => {
   }
   return (
     <section className='main-users-user'>
-      <FormProvider {...methodsAddUser}>
         <form id='userAddForm' onSubmit={handleSubmit(onSubmit)}>
         <Table sx={{ '& thead th': { textAlign: 'center', } }} aria-label="basic table">
           <thead>
@@ -44,7 +41,7 @@ export const User = () => {
           </tbody>
         </Table>
       </form>
-    </FormProvider>
+
     </section >
   )
 }
