@@ -1,35 +1,50 @@
 import { Table } from '@mui/joy/';
 import { useParams } from 'react-router-dom';
 import { UserTrView } from '../../components/User/UserTrView';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { FormProvider, useForm } from 'react-hook-form';
+import { changeUser } from '../../features/users/usersSlise';
+import { UseUsersContext } from '../../context/users/context';
 
 export const User = () => {
-  const {list}=useSelector(state=>state.users)
-  const {id} = useParams()
-  console.log(id);
+  const {change,setChange,currentUser,setCurrentUser} = UseUsersContext()
   
-  const user = list.find(user=>(user.id === id))
-   
-   
+  const dispatch = useDispatch()
+  const methodsAddUser = useForm()
+  const { list } = useSelector(state => state.users)
+  const { id } = useParams()
+ 
+  const { handleSubmit } = methodsAddUser
+  const user = list.find(user => (user.id === id))
   const component = 'userView'
+
+  const onSubmit = (data) => {
+      const {login,password,email} = data
+      dispatch(changeUser({id,login,password,email}))
+      setChange(false)
+  }
   return (
     <section className='main-users-user'>
-      <Table sx={{ '& thead th': { textAlign: 'center', } }} aria-label="basic table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Користувач</th>
-            <th>Пароль</th>
-            <th>Пошта</th>
-            <th>Профіль</th>
-            
-          </tr>
-        </thead>
-        <tbody>
-        <UserTrView {...user} component={component} />
+      <FormProvider {...methodsAddUser}>
+        <form id='userAddForm' onSubmit={handleSubmit(onSubmit)}>
+        <Table sx={{ '& thead th': { textAlign: 'center', } }} aria-label="basic table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Користувач</th>
+              <th>Пароль</th>
+              <th>Пошта</th>
+              <th>Профіль</th>
 
-        </tbody>
-      </Table>
-    </section>
+            </tr>
+          </thead>
+          <tbody>
+            <UserTrView {...user} component={component} />
+
+          </tbody>
+        </Table>
+      </form>
+    </FormProvider>
+    </section >
   )
 }

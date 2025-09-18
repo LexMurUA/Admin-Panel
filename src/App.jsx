@@ -5,18 +5,21 @@ import { Header } from './layout/Header/Header'
 import { Footer } from './layout/Footer/Footer'
 import { Main } from './layout/Main/Main'
 import { Outlet } from 'react-router-dom'
+import { UsersContextProvider } from './context/users/context'
 
 function App() {
 
 
   return (
     <>
-     <Header />
+      <Header />
       <Main>
-        <Outlet/>
+        <UsersContextProvider>
+          <Outlet />
+        </UsersContextProvider>
       </Main>
-     <Footer />
-     
+      <Footer />
+
     </>
   )
 }
