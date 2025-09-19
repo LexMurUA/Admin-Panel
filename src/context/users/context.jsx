@@ -2,7 +2,8 @@ import { createContext, useContext, useState } from "react";
 import { FormProvider, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { changeUser } from '../../features/users/usersSlise';
+import { addToUsers, changeUser } from '../../features/users/usersSlise';
+import { useNavigate } from 'react-router-dom'
 
 const usersContext = createContext(null)
 
@@ -16,21 +17,29 @@ export const UsersContextProvider = ({ children }) => {
     const dispatch = useDispatch()
     const [modalStatus, setModalStatus] = useState(false)
     const [selectedId,setSelectedId] =useState(null)
+    const navigate = useNavigate()
+    const [actionForm,setActionForm] =useState(null)
     //Pagination
     const perPage = 20
     const startIndex = 0
     const [endIndex, setEndIndex] = useState(perPage)
 
     //FUNCTIONS===
-    const onSubmit = (data) => {
+    const onSubmit = (data, action) => {
         const { login, password, email } = data
-        dispatch(changeUser({ id, login, password, email }))
-        setChange(false)
+        if (action==='change'){
+            dispatch(changeUser({ id, login, password, email }))
+            setChange(false)
+        }
+        if (action==='add'){
+            dispatch(addToUsers({id:list.length,login,password,email}))
+            
+        }
     }
     const getUser = (list, id) => list.find(user => user.id === id)
 
     return (
-        <usersContext.Provider value={{ change, setChange, currentUser, setCurrentUser, methodsAddUser, id, onSubmit, getUser, list, dispatch, endIndex, setEndIndex, perPage, startIndex, modalStatus, setModalStatus, selectedId, setSelectedId }}>
+        <usersContext.Provider value={{ change, navigate,actionForm,setActionForm, setChange, currentUser, setCurrentUser, methodsAddUser, id, onSubmit, getUser, list, dispatch, endIndex, setEndIndex, perPage, startIndex, modalStatus, setModalStatus, selectedId, setSelectedId }}>
             <FormProvider {...methodsAddUser}>
                 {children}
             </FormProvider >

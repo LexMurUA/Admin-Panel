@@ -10,11 +10,13 @@ import {  ModalWindow } from '../Modal/ModalWindow';
 
 
 export const UserTrView = ({ id, login, password, email, component }) => {
-  const { change, setChange, dispatch, setModalStatus, setSelectedId } = UseUsersContext()  
+  const { change, setChange, dispatch, setModalStatus, setSelectedId,setActionForm } = UseUsersContext()  
   
  
   const changeEditor = () => {
-    !change ? setChange(true) : setChange(false)
+      setChange(true)
+      setActionForm('change')
+
   }
   const deleteWarning = ()=>{
     setModalStatus(true)
@@ -28,7 +30,7 @@ export const UserTrView = ({ id, login, password, email, component }) => {
       
       
       {change ? (
-        <UserForm />
+        <UserForm componentModal={false} />
       )
         : (<>
           <td>{login}</td>
@@ -42,7 +44,7 @@ export const UserTrView = ({ id, login, password, email, component }) => {
           <td><NavLink to={`/users/${id}`}><Button variant="soft" size="sm" color='primary'>Детальніше</Button></NavLink></td>
           <td><Button onClick={deleteWarning} size="sm" color='danger'>X</Button></td>
         </>)
-        : (<td><Button type={change ? 'submit':'button'} onClick={change? undefined : changeEditor} size="sm" color={change ? 'success' : 'warning'}>{change ? 'Зберегти' : 'Редагувати'}</Button></td>)}
+        : (<td><Button type={change ? 'submit':'button'} onClick={change ? undefined : changeEditor} size="sm" color={change ? 'success' : 'warning'}>{change ? 'Зберегти' : 'Редагувати'}</Button></td>)}
 
     </tr>
      

@@ -1,15 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux'
 import './Users.scss'
 import { UserTrView } from '../../components/User/UserTrView';
-import { Table } from '@mui/joy/';
+import { Table,Box, Button } from '@mui/joy/';
 import { UseUsersContext } from '../../context/users/context';
 import { useState } from 'react';
 import { pagination } from '../../utils/pagination/globals';
 import { ModalWindow } from '../../components/Modal/ModalWindow';
+import { ControlPanel } from '../../components/ControlPanel/ControlPanel';
 
 
 export const Users = () => {
-  const { list, endIndex, setEndIndex, perPage, startIndex, } = UseUsersContext()
+  const { list, endIndex, startIndex, } = UseUsersContext()
 
   const component = 'usersView'
   const viewSide = pagination(list, startIndex, endIndex)
@@ -41,8 +42,7 @@ export const Users = () => {
 
         </tbody>
       </Table>
-      <button onClick={()=>setEndIndex(prev=>prev+perPage)}>відкрити щє</button>
-      <ModalWindow componentModal={componentModal}  />
+      <ControlPanel componentModal={componentModal} />
     </section>
   )
 }

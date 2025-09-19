@@ -2,17 +2,19 @@ import './Login.scss'
 import { Input, Button } from '@mui/joy'
 import { useForm } from 'react-hook-form'
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+
 import { useDispatch, useSelector } from 'react-redux'
 import { isAuth } from '../../features/auth/authSlice'
+import { UseUsersContext } from '../../context/users/context'
 
 
 export const Login = () => {
+  const {navigate}=UseUsersContext()
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm()
   const dispatch = useDispatch()
   const {list}= useSelector(state=>state.admins)
   const {authToken}=useSelector(state=>state.auth)
-  const navigate = useNavigate()
+  
   const [message, setMessage] = useState(null)
   
 

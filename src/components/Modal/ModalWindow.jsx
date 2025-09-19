@@ -1,12 +1,12 @@
 import { Box, Button, Modal, ModalClose, ModalDialog, Typography } from '@mui/joy/';
 import { UseUsersContext } from '../../context/users/context';
 import { deleteUser } from '../../features/users/usersSlise';
+import { UserForm } from '../userForm/userForm';
 
 export const ModalWindow = ({  componentModal }) => {
   const { modalStatus, setModalStatus,dispatch,selectedId } = UseUsersContext()
   
   const deleteUserModal = (id)=>{
-    
     dispatch(deleteUser(id))
     setModalStatus(false)
   }
@@ -37,7 +37,18 @@ export const ModalWindow = ({  componentModal }) => {
             </Box>
             </>
           )
-          : (<Typography>sd</Typography>)}
+          : (
+            <>
+            <table>
+            <tbody>
+            <tr>
+              <UserForm componentModal={componentModal} />
+            </tr>
+            </tbody>
+            </table>
+            <Button type='submit' onClick={()=>setModalStatus(false)}>Зберегти</Button>
+            </>
+          )}
 
         
       </ModalDialog>
