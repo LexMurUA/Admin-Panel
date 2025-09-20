@@ -14,8 +14,8 @@ export const ModalWindow = ({  componentModal }) => {
     <Modal slotProps={{
       backdrop: {
         sx: {
-          backgroundColor: 'transparent', // светлый полупрозрачный
-          backdropFilter: 'blur(3px)', // размытие фона (опционально)
+          backgroundColor: 'transparent',
+          backdropFilter: 'blur(3px)', 
         },
       },
     }} open={modalStatus} onClose={() => setModalStatus(false)}>
@@ -38,7 +38,7 @@ export const ModalWindow = ({  componentModal }) => {
             </>
           )
           : (
-            <>
+            <Box>
             <table>
             <tbody>
             <tr>
@@ -46,8 +46,8 @@ export const ModalWindow = ({  componentModal }) => {
             </tr>
             </tbody>
             </table>
-            <Button type='submit' onClick={()=>setModalStatus(false)}>Зберегти</Button>
-            </>
+              <Button type='submit' form="userAddForm">Зберегти</Button>
+            </Box>
           )}
 
         

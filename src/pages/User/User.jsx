@@ -7,7 +7,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { forUser, userView } from '../../utils/pagination/globals';
 
 export const User = () => {
-  const { list, id, onSubmit, getUser, actionForm  } = UseUsersContext()
+  const { list, id, onSubmit, getUser, actionForm } = UseUsersContext()
   const methodsAddUser = useForm()
   const { handleSubmit } = methodsAddUser
   const component = userView
@@ -16,27 +16,27 @@ export const User = () => {
   return (
     <section className='main-users-user'>
       <FormProvider {...methodsAddUser}>
-      <form id="userAddForm" onSubmit={handleSubmit((data) => onSubmit(data, actionForm))}>
+        <form id="userAddForm" onSubmit={handleSubmit((data) => onSubmit(data, actionForm))}>
 
-        <Table sx={{ '& thead th': { textAlign: 'center', } }} aria-label="basic table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Користувач</th>
-              <th>Пароль</th>
-              <th>Пошта</th>
-              <th>Профіль</th>
+          <Table sx={{ '& thead th': { textAlign: 'center', } }} aria-label="basic table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Користувач</th>
+                <th>Пароль</th>
+                <th>Пошта</th>
+                <th>Профіль</th>
 
-            </tr>
-          </thead>
-          <tbody>
-            <UserTrView {...getUser(list, id)} component={component} />
+              </tr>
+            </thead>
+            <tbody>
+              <UserTrView {...getUser(list, id)} component={component} />
 
-          </tbody>
-        </Table>
-      </form>
+            </tbody>
+          </Table>
+          <ControlPanel componentModal={componentModal} />
+        </form>
       </FormProvider >
-      <ControlPanel componentModal={componentModal} />
     </section >
   )
 }

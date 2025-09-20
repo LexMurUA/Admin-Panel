@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { addToUsers, changeUser } from '../../features/users/usersSlise';
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form';
-
+import { v4 as uuidv4 } from 'uuid';
 
 const usersContext = createContext(null)
 
@@ -30,11 +30,15 @@ export const UsersContextProvider = ({ children }) => {
     const onSubmit = (data, action) => {
         const { login, password, email } = data
         if (action==='change'){
+            console.log('change');
+            
             dispatch(changeUser({ id, login, password, email }))
             setChange(false)
         }
         if (action==='add'){
-            dispatch(addToUsers({id:list.length,login,password,email}))
+            console.log('add');
+            dispatch(addToUsers({ id: uuidv4(),login,password,email}))
+            setModalStatus(false)
             
         }
     }

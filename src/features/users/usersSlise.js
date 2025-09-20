@@ -317,8 +317,6 @@ export const usersSlice = createSlice({
     changeUser: (state,action)=> {
       const {id,login,password,email} = action.payload
       const user = state.list.find(user=>user.id === id);
-      console.log(user);
-      
        if (user.login === login && user.password === password && user.email===email) return
       user.login = login;
       user.password = password;
