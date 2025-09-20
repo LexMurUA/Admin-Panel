@@ -10,7 +10,7 @@ import {  ModalWindow } from '../Modal/ModalWindow';
 
 
 export const UserTrView = ({ id, login, password, email, component }) => {
-  const { change, setChange, dispatch, setModalStatus, setSelectedId,setActionForm } = UseUsersContext()  
+  const { change, setChange, dispatch, setModalStatus, setSelectedId, setActionForm, } = UseUsersContext()  
   
  
   const changeEditor = () => {

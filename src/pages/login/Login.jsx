@@ -33,7 +33,7 @@ export const Login = () => {
     if (user) {
       setMessage({ type: 'success', text: `Ласкаво просимо ${login}` })
       dispatch(isAuth())
-      setTimeout(() => navigate('/users'),1500)
+      navigate('/users')
       
     } else {
       setMessage({ type: 'error', text: 'Неверный логин или пароль' })

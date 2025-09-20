@@ -1,19 +1,21 @@
 import { Table } from '@mui/joy/';
 import { useSelector } from 'react-redux';
-import { UserTrView } from '../../components/User/UserTrView';
+import { UserTrView } from '../../components/UserTrView/UserTrView';
 import { UseUsersContext } from '../../context/users/context';
 import { ControlPanel } from '../../components/ControlPanel/ControlPanel';
-
+import { FormProvider, useForm } from 'react-hook-form';
+import { forUser, userView } from '../../utils/pagination/globals';
 
 export const User = () => {
-  const { list,methodsAddUser, id, onSubmit, getUser,actionForm } = UseUsersContext()
-
+  const { list, id, onSubmit, getUser, actionForm  } = UseUsersContext()
+  const methodsAddUser = useForm()
   const { handleSubmit } = methodsAddUser
-  const component = 'userView'
-  const componentModal = 'forUser'
+  const component = userView
+  const componentModal = forUser
 
   return (
     <section className='main-users-user'>
+      <FormProvider {...methodsAddUser}>
       <form id="userAddForm" onSubmit={handleSubmit((data) => onSubmit(data, actionForm))}>
 
         <Table sx={{ '& thead th': { textAlign: 'center', } }} aria-label="basic table">
@@ -33,6 +35,7 @@ export const User = () => {
           </tbody>
         </Table>
       </form>
+      </FormProvider >
       <ControlPanel componentModal={componentModal} />
     </section >
   )

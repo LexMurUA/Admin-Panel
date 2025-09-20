@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import './Users.scss'
-import { UserTrView } from '../../components/User/UserTrView';
+import { UserTrView } from '../../components/UserTrView/UserTrView';
 import { Table,Box, Button } from '@mui/joy/';
 import { UseUsersContext } from '../../context/users/context';
 import { useState } from 'react';

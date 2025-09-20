@@ -1,15 +1,15 @@
 import { Input } from '@mui/joy';
-import { useFormContext } from 'react-hook-form'
+import { useFormContext } from 'react-hook-form';
 import { emailValidate, passwordValidate } from '../../constants/formValidate';
 import { UseUsersContext } from '../../context/users/context';
 
 
-export const UserForm = ({componentModal}) => {
-  const {getUser,id,list} = UseUsersContext()
+export const UserForm = ({ componentModal }) => {
+  const { getUser, id, list } = UseUsersContext()
   const { register, handleSubmit, formState: { errors, isSubmitted } } = useFormContext()
- 
-  const user = getUser(list,id)
- 
+
+  const user = getUser(list, id)
+
 
 
   return (
@@ -20,9 +20,9 @@ export const UserForm = ({componentModal}) => {
           required: "Логін обов'язково",
           maxLength: { value: 20, message: "Не більше 20 символів" }
         })}
-          placeholder='Логін'
-          
-          defaultValue={componentModal ? '': user.login}
+          placeholder={componentModal ? 'Логін' : user.login}
+
+        // defaultValue={componentModal ? '': user.login}
         />
         {errors.login && <p>{errors.login.message}</p>}
 
@@ -34,9 +34,9 @@ export const UserForm = ({componentModal}) => {
           maxLength: { value: 20, message: "Не більше 20 символів" },
           minLength: { value: 5, message: "Мінімум 5 символів" },
           pattern: { value: passwordValidate, message: "Некоректний пароль" }
-        })} 
-          placeholder='Пароль'
-          defaultValue={componentModal ? '': user.password}
+        })}
+          placeholder={componentModal ? 'Пароль' : user.password}
+        // defaultValue={componentModal ? '': user.password}
         />
         {errors.password && <p>{errors.password.message}</p>}
       </td>
@@ -46,9 +46,9 @@ export const UserForm = ({componentModal}) => {
           required: "Пошта обов'язкова",
           maxLength: { value: 20, message: "Не більше 20 символів" },
           pattern: { value: emailValidate, message: "Некоректна пошта" }
-        })} 
-          placeholder='Пошта'
-          defaultValue={componentModal ? '': user.email}
+        })}
+          placeholder={componentModal ? 'Пошта' : user.email}
+        // defaultValue={componentModal ? '': user.email}
         />
         {errors.email && <p>{errors.email.message}</p>}
       </td>

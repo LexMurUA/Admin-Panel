@@ -1,18 +1,20 @@
 import { createContext, useContext, useState } from "react";
-import { FormProvider, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { addToUsers, changeUser } from '../../features/users/usersSlise';
 import { useNavigate } from 'react-router-dom'
+import { useForm } from 'react-hook-form';
+
 
 const usersContext = createContext(null)
 
 export const UsersContextProvider = ({ children }) => {
+    
     const { list } = useSelector(state => state.users)
     //HOOKS===
     const [change, setChange] = useState(false)
     const [currentUser, setCurrentUser] = useState(null)
-    const methodsAddUser = useForm()
+    
     const { id } = useParams()
     const dispatch = useDispatch()
     const [modalStatus, setModalStatus] = useState(false)
@@ -39,10 +41,10 @@ export const UsersContextProvider = ({ children }) => {
     const getUser = (list, id) => list.find(user => user.id === id)
 
     return (
-        <usersContext.Provider value={{ change, navigate,actionForm,setActionForm, setChange, currentUser, setCurrentUser, methodsAddUser, id, onSubmit, getUser, list, dispatch, endIndex, setEndIndex, perPage, startIndex, modalStatus, setModalStatus, selectedId, setSelectedId }}>
-            <FormProvider {...methodsAddUser}>
+        <usersContext.Provider value={{ change, navigate,actionForm,setActionForm, setChange, currentUser, setCurrentUser, id, onSubmit, getUser, list, dispatch, endIndex, setEndIndex, perPage, startIndex, modalStatus, setModalStatus, selectedId, setSelectedId }}>
+           
                 {children}
-            </FormProvider >
+            
         </usersContext.Provider>
     )
 }
