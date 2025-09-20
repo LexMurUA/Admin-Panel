@@ -1,19 +1,18 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import adminsReducer from '../features/admins/adminsSlice'
-import authReducer from '../features/auth/authSlice'
-import usersReducer from '../features/users/usersSlise'
 import {
-  persistStore,
-  persistReducer,
   FLUSH,
-  REHYDRATE,
   PAUSE,
   PERSIST,
+  persistReducer,
+  persistStore,
   PURGE,
-  REGISTER
-} from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
-import { version } from 'react';
+  REGISTER,
+  REHYDRATE
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import adminsReducer from '../features/admins/adminsSlice';
+import authReducer from '../features/auth/authSlice';
+import usersReducer from '../features/users/usersSlise';
 
 
 const rootReducer = combineReducers({
@@ -25,18 +24,18 @@ const rootReducer = combineReducers({
 const persistConfig = ({
   key: 'root',
   storage,
-  whitelist: ['auth','users'],
-  blacklist:['admins'],
+  whitelist: ['auth', 'users'],
+  blacklist: ['admins'],
   version: 1
 })
 
-const persistedReducer = persistReducer(persistConfig,rootReducer)
+const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 
 export const store = configureStore({
   reducer: persistedReducer,
-  middleware: (getDefaultMiddleware)=>getDefaultMiddleware({
-    serializableCheck:{
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    serializableCheck: {
       ignoreActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
     }
   })

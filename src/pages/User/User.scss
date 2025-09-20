@@ -1,0 +1,14 @@
+.main-users-user {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-users-user form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  /* форма занимает всё */
+}
+

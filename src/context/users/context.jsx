@@ -1,7 +1,7 @@
 import { createContext, useContext, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { addToUsers, changeUser } from '../../features/users/usersSlise';
+import { addToUsers, changeUser, deleteUser } from '../../features/users/usersSlise';
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form';
 import { v4 as uuidv4 } from 'uuid';
@@ -9,18 +9,20 @@ import { v4 as uuidv4 } from 'uuid';
 const usersContext = createContext(null)
 
 export const UsersContextProvider = ({ children }) => {
-    
+
+    //State users===
     const { list } = useSelector(state => state.users)
+
     //HOOKS===
     const [change, setChange] = useState(false)
     const [currentUser, setCurrentUser] = useState(null)
-    
     const { id } = useParams()
     const dispatch = useDispatch()
     const [modalStatus, setModalStatus] = useState(false)
-    const [selectedId,setSelectedId] =useState(null)
+    const [selectedId, setSelectedId] = useState(null)
     const navigate = useNavigate()
-    const [actionForm,setActionForm] =useState(null)
+    const [actionForm, setActionForm] = useState(null)
+
     //Pagination
     const perPage = 20
     const startIndex = 0
@@ -29,26 +31,33 @@ export const UsersContextProvider = ({ children }) => {
     //FUNCTIONS===
     const onSubmit = (data, action) => {
         const { login, password, email } = data
-        if (action==='change'){
+        if (action === 'change') {
             console.log('change');
-            
+
             dispatch(changeUser({ id, login, password, email }))
             setChange(false)
         }
-        if (action==='add'){
+        if (action === 'add') {
             console.log('add');
-            dispatch(addToUsers({ id: uuidv4(),login,password,email}))
+            dispatch(addToUsers({ id: uuidv4(), login, password, email }))
             setModalStatus(false)
-            
         }
     }
+    
     const getUser = (list, id) => list.find(user => user.id === id)
 
+    const deleteUserModal = (id) => {
+        dispatch(deleteUser(id))
+        setModalStatus(false)
+    }
+
     return (
-        <usersContext.Provider value={{ change, navigate,actionForm,setActionForm, setChange, currentUser, setCurrentUser, id, onSubmit, getUser, list, dispatch, endIndex, setEndIndex, perPage, startIndex, modalStatus, setModalStatus, selectedId, setSelectedId }}>
-           
-                {children}
-            
+        <usersContext.Provider value={{
+            change, navigate, actionForm, setActionForm, setChange, currentUser,
+            setCurrentUser, id, onSubmit, getUser, list, dispatch, endIndex, setEndIndex,
+            perPage, startIndex, modalStatus, setModalStatus, selectedId, setSelectedId, deleteUserModal
+        }}>
+            {children}
         </usersContext.Provider>
     )
 }
