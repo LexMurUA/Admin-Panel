@@ -17,7 +17,7 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter>
+        <BrowserRouter basename="/Admin-Panel">
         <Routes>
           <Route path='/' element={<App />}>
             <Route index element={<Login />} />
