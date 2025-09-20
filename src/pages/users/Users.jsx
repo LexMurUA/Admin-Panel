@@ -20,11 +20,13 @@ export const Users = () => {
     <section className='main-users'>
 
       <Table sx={{
-        '& thead th': { textAlign: 'center' },
-        '& thead th:first-of-type, & tbody td:first-of-type': { width: '5vw' },
-        '& thead th:last-of-type, & tbody td:last-of-type': { width: '8vw' },
-        '& thead th:not(:first-of-type):not(:last-of-type), & tbody td:not(:first-of-type):not(:last-of-type)': { width: '15vw' },
-      }} aria-label="basic table">
+        '& thead th': { textAlign: 'center' }
+      }} /*sx={{
+            '& thead th': { textAlign: 'center' },
+            '& thead th:first-of-type, & tbody td:first-of-type': { width: '5vw' },
+            '& thead th:last-of-type, & tbody td:last-of-type': { width: '8vw' },
+            '& thead th:not(:first-of-type):not(:last-of-type), & tbody td:not(:first-of-type):not(:last-of-type)': { width: '15vw' },
+          }} */ aria-label="basic table">
         <thead>
           <tr>
             <th>ID</th>

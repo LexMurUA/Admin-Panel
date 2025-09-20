@@ -10,23 +10,62 @@
   /* форма занимает всё */
 }
 
-@include breakPoint(desktop){
-  .main-users{
+@include breakPoint(desktop) {
+  .main-users {
     border: 1px solid greenyellow;
   }
 }
-@include breakPoint(laptop){
-  .main-users{
+
+@include breakPoint(laptop) {
+  .main-users {
     border: 1px solid rgb(255, 217, 0);
   }
 }
-@include breakPoint(tablet){
-  .main-users{
+
+@include breakPoint(tablet) {
+  .main-users {
     border: 1px solid rgb(21, 0, 255);
   }
 }
-@include breakPoint(phone){
-  .main-users{
+
+@include breakPoint(phone) {
+  .main-users {
     border: 1px solid rgb(255, 0, 212);
+    justify-content:center
+    table {
+      display: flex;
+      tbody{
+        display: flex;
+        flex-wrap: wrap;
+      }
+      th,
+      td {
+        
+        button{
+          text-align: center;
+          margin: 5px;
+          padding: 0 20px;
+        }
+        
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &:first-of-type {
+          width: 18vw;
+          
+        }
+
+        &:last-of-type {
+          width: 18vw;
+        }
+
+        &:not(:first-of-type):not(:last-of-type) {
+          width: 18vw;
+        }
+      }
+    }
+
+
   }
 }

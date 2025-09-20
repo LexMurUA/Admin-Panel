@@ -4,7 +4,7 @@ import { ModalWindow } from "../Modal/ModalWindow"
 import { Box, Button, Typography } from '@mui/joy/';
 
 export const ControlPanel = ({ componentModal }) => {
-    const { setEndIndex, perPage, list, navigate, setModalStatus, setActionForm } = UseUsersContext()
+    const { setEndIndex, perPage, list, navigate, setModalStatus, setActionForm,change } = UseUsersContext()
 
     const addUserProces = () => {
         setModalStatus(true)
@@ -26,8 +26,8 @@ export const ControlPanel = ({ componentModal }) => {
             )
                 : (
                     <>
-                        <Button onClick={() => navigate(-1)}>До користувачів</Button>
-                        <Button onClick={addUserProces}>Додати користувача</Button>
+                        <Button disabled={change} onClick={() => navigate(-1)}>До користувачів</Button>
+                        <Button disabled={change} onClick={addUserProces}>Додати користувача</Button>
                     </>
                 )}
 

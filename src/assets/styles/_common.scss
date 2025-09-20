@@ -1,30 +1,3 @@
-
-
-.container {
-  width: 100%;
-  height: 100dvh;
-  min-width: 375px;
-  border: 1px solid rgb(255, 204, 0);
-  button{
-    max-width: 15vw;
-    padding: 8px;
-    margin: 5px;
-  }
-  td,th{
-    border: 1px solid salmon;
-    font-size: 1.5vw;
-    
-  }
-}
-
-.ControlPanel{
-  button{
-    max-width: 3vw;
-  }
-}
-
-
-
 //MOBILE
 
 @mixin breakPoint($point) {
@@ -67,3 +40,72 @@
     }
   }
 }
+.container {
+  width: 100%;
+  height: 100dvh;
+  min-width: 375px;
+  border: 1px solid rgb(255, 204, 0);
+  
+  button {
+    @include mobileClick();
+    font-size: 1.5vw;
+    max-width: 15vw;
+    height: 4vh;
+    padding: 8px;
+    margin: 5px;
+  }
+
+  td,
+  th {
+    border: 1px solid salmon;
+    font-size: 1.6vw;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+  }
+}
+
+
+
+table {
+  thead {
+    th {
+
+
+      &:first-of-type {
+        width: 5vw;
+      }
+
+      &:last-of-type {
+        width: 8vw;
+      }
+
+      &:not(:first-of-type):not(:last-of-type) {
+        width: 15vw;
+      }
+    }
+  }
+
+  tbody {
+    td {
+      text-align: center;
+
+      &:first-of-type {
+        width: 5vw;
+
+      }
+
+      &:last-of-type {
+        width: 8vw;
+
+      }
+
+      &:not(:first-of-type):not(:last-of-type) {
+        width: 15vw;
+
+      }
+    }
+  }
+}
+

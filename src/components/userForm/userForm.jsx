@@ -14,7 +14,7 @@ export const UserForm = ({ componentModal }) => {
 
     <>
       <td>
-        <Input {...register("login", {
+        <Input sx={{ width: '20vw' }} {...register("login", {
           required: "Логін обов'язково",
           maxLength: { value: 20, message: "Не більше 20 символів" }
         })}
@@ -25,7 +25,7 @@ export const UserForm = ({ componentModal }) => {
       </td>
 
       <td>
-        <Input {...register("password", {
+        <Input sx={{ width: '20vw' }} {...register("password", {
           required: "Пароль обов'язково",
           maxLength: { value: 20, message: "Не більше 20 символів" },
           minLength: { value: 5, message: "Мінімум 5 символів" },
@@ -37,7 +37,7 @@ export const UserForm = ({ componentModal }) => {
       </td>
 
       <td>
-        <Input {...register("email", {
+        <Input sx={{ width: '20vw' }} {...register("email", {
           required: "Пошта обов'язкова",
           maxLength: { value: 20, message: "Не більше 20 символів" },
           pattern: { value: emailValidate, message: "Некоректна пошта" }
