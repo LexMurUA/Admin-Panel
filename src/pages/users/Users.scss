@@ -2,45 +2,44 @@
 
 
 .main-users {
+
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   flex: 1;
+      .control-panel {
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+        }
   /* форма занимает всё */
 }
 
-@include breakPoint(desktop) {
-  .main-users {
-    border: 1px solid greenyellow;
-  }
-}
 
-@include breakPoint(laptop) {
-  .main-users {
-    border: 1px solid rgb(255, 217, 0);
-  }
-}
 
-@include breakPoint(tablet) {
-  .main-users {
-    border: 1px solid rgb(21, 0, 255);
-  }
-}
+
+
+
 
 @include breakPoint(phone) {
   .main-users {
-    border: 1px solid rgb(255, 0, 212);
+    .control-panel{
+      display: flex;
+      
+      flex-wrap: wrap;
+    }
     justify-content:center
     table {
       display: flex;
       tbody{
         display: flex;
         flex-wrap: wrap;
+        
       }
       th,
       td {
-        
+ 
         button{
           text-align: center;
           margin: 5px;

@@ -1,5 +1,4 @@
 import { Button } from '@mui/joy/';
-
 import { NavLink } from 'react-router-dom';
 import { UseUsersContext } from '../../context/users/context';
 import { UserForm } from '../userForm/userForm';
@@ -38,7 +37,7 @@ export const UserTrView = ({ id, login, password, email, component }) => {
           <td><NavLink to={`/users/${id}`}><Button variant="soft" size="sm" color='primary'>Детальніше</Button></NavLink></td>
           <td><Button onClick={deleteWarning} size="sm" color='danger'>X</Button></td>
         </>)
-        : (<td><Button type={change ? 'submit' : 'button'} onClick={change ? undefined : changeEditor} size="sm" color={change ? 'success' : 'warning'}>{change ? 'Зберегти' : 'Редагувати'}</Button></td>)}
+        : (<td><Button sx={{ maxWidth: '15vw', padding: '0' }} variant="outlined" type={change ? 'submit' : 'button'} onClick={change ? undefined : changeEditor} size="sm" color={change ? 'success' : 'warning'}>{change ? 'Зберегти' : 'Редагувати'}</Button></td>)}
 
     </tr>
 

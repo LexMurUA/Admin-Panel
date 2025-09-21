@@ -1,10 +1,8 @@
 import { createContext, useContext, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { addToUsers, changeUser, deleteUser } from '../../features/users/usersSlise';
-import { useNavigate } from 'react-router-dom'
-import { useForm } from 'react-hook-form';
+import { useNavigate, useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+import { addToUsers, changeUser, deleteUser } from '../../features/users/usersSlise';
 
 const usersContext = createContext(null)
 
@@ -43,7 +41,7 @@ export const UsersContextProvider = ({ children }) => {
             setModalStatus(false)
         }
     }
-    
+
     const getUser = (list, id) => list.find(user => user.id === id)
 
     const deleteUserModal = (id) => {

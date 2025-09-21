@@ -1,5 +1,5 @@
+import { Box, Typography } from "@mui/joy";
 import { useEffect, useState } from "react";
-import { Typography } from "@mui/joy";
 
 export const LiveClock = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -7,7 +7,7 @@ export const LiveClock = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentTime(new Date());
-    }, 1000); 
+    }, 1000);
 
     return () => clearInterval(timer);
   }, []);
@@ -25,8 +25,10 @@ export const LiveClock = () => {
   });
 
   return (
-    <Typography level="h4" variant="plain">
-      {formattedDate} {formattedTime}
-    </Typography>
+    <Box sx={{ margin: '5px', width: '15vw' }}>
+      <Typography sx={{ fontSize: '1.6vw', fontWeight: 'bold', padding: '0px' }} level="h4" variant="plain">
+        {formattedDate} {formattedTime}
+      </Typography>
+    </Box>
   );
 };

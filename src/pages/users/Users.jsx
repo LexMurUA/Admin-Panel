@@ -1,12 +1,9 @@
-import { useDispatch, useSelector } from 'react-redux'
-import './Users.scss'
-import { UserTrView } from '../../components/UserTrView/UserTrView';
-import { Table,Box, Button } from '@mui/joy/';
-import { UseUsersContext } from '../../context/users/context';
-import { useState } from 'react';
-import { pagination } from '../../utils/pagination/globals';
-import { ModalWindow } from '../../components/Modal/ModalWindow';
+import { Table } from '@mui/joy/';
 import { ControlPanel } from '../../components/ControlPanel/ControlPanel';
+import { UserTrView } from '../../components/UserTrView/UserTrView';
+import { UseUsersContext } from '../../context/users/context';
+import { pagination } from '../../utils/pagination/globals';
+import './Users.scss';
 
 
 export const Users = () => {
@@ -21,12 +18,7 @@ export const Users = () => {
 
       <Table sx={{
         '& thead th': { textAlign: 'center' }
-      }} /*sx={{
-            '& thead th': { textAlign: 'center' },
-            '& thead th:first-of-type, & tbody td:first-of-type': { width: '5vw' },
-            '& thead th:last-of-type, & tbody td:last-of-type': { width: '8vw' },
-            '& thead th:not(:first-of-type):not(:last-of-type), & tbody td:not(:first-of-type):not(:last-of-type)': { width: '15vw' },
-          }} */ aria-label="basic table">
+      }} aria-label="basic table">
         <thead>
           <tr>
             <th>ID</th>

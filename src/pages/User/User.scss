@@ -1,7 +1,14 @@
+@use '../../assets/styles/common'as *;
+
 .main-users-user {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+        .control-panel {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+          }
 }
 
 .main-users-user form {
@@ -9,6 +16,46 @@
   flex-direction: column;
   justify-content: space-between;
   flex: 1;
+
   /* форма занимает всё */
 }
 
+
+@include breakPoint(phone) {
+  .main-users-user{
+    border: 1px solid purple;
+    align-items: center;
+    justify-content: center;
+    
+    table{
+      display: flex;
+      flex: 1;
+      th,td{
+        justify-content: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          flex: 1;
+          font-size: 4vw;
+          &:first-of-type {
+            width: 50vw;
+            height: 20vh;
+        
+          }
+        
+          &:last-of-type {
+           width: 50vw;
+            height: 20vh;
+          }
+        
+          &:not(:first-of-type):not(:last-of-type) {
+            width: 50vw;
+            height: 20vh;
+          }
+      }
+    }
+  }
+   
+
+}

@@ -1,22 +1,22 @@
-import './Login.scss'
-import { Input, Button } from '@mui/joy'
-import { useForm } from 'react-hook-form'
+import { Button, Input } from '@mui/joy'
 import { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
+import './Login.scss'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { isAuth } from '../../features/auth/authSlice'
 import { UseUsersContext } from '../../context/users/context'
+import { isAuth } from '../../features/auth/authSlice'
 
 
 export const Login = () => {
-  const {navigate}=UseUsersContext()
+  const { navigate } = UseUsersContext()
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm()
   const dispatch = useDispatch()
-  const {list}= useSelector(state=>state.admins)
-  const {authToken}=useSelector(state=>state.auth)
-  
+  const { list } = useSelector(state => state.admins)
+  const { authToken } = useSelector(state => state.auth)
+
   const [message, setMessage] = useState(null)
-  
+
 
 
 
@@ -28,13 +28,13 @@ export const Login = () => {
 
   const onSubmit = (data) => {
     const { login, password } = data
-    
-    const user = list.find(admin=>admin.login === login && admin.password ===password && (admin))
+
+    const user = list.find(admin => admin.login === login && admin.password === password && (admin))
     if (user) {
       setMessage({ type: 'success', text: `Ласкаво просимо ${login}` })
       dispatch(isAuth())
       navigate('/users')
-      
+
     } else {
       setMessage({ type: 'error', text: 'Неверный логин или пароль' })
     }
@@ -51,7 +51,7 @@ export const Login = () => {
       <Input id="password" type="password"{...register('password', { required: 'Введите пароль' })} placeholder='Введіть 1' />
       {errors.password && <div className="error">{errors.password.message}</div>}
 
-    <Button type="submit" color="warning" disabled={isSubmitting}>Войти</Button>
+      <Button type="submit" color="warning" disabled={isSubmitting}>Войти</Button>
       {message && (
         <div className={message.type === 'error' ? 'error' : 'success'}>{message.text}</div>
       )}

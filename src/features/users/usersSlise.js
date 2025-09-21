@@ -314,15 +314,15 @@ export const usersSlice = createSlice({
     addToUsers: (state, action) => {
       state.list.push(action.payload)
     },
-    changeUser: (state,action)=> {
-      const {id,login,password,email} = action.payload
-      const user = state.list.find(user=>user.id === id);
-       if (user.login === login && user.password === password && user.email===email) return
+    changeUser: (state, action) => {
+      const { id, login, password, email } = action.payload
+      const user = state.list.find(user => user.id === id);
+      if (user.login === login && user.password === password && user.email === email) return
       user.login = login;
       user.password = password;
       user.email = email
     },
-    deleteUser:(state,action)=>{state.list = state.list.filter(user => user.id != action.payload)}
+    deleteUser: (state, action) => { state.list = state.list.filter(user => user.id != action.payload) }
   }
 })
 
