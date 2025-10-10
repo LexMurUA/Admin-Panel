@@ -10,6 +10,7 @@ import './index.scss'
 import { Login } from './pages/login/Login.jsx'
 import { User } from './pages/User/User.jsx'
 import { Users } from './pages/users/Users.jsx'
+import { ErrorPage } from './pages/ErrorPage/ErrorPage.jsx'
 
 
 
@@ -23,6 +24,7 @@ createRoot(document.getElementById('root')).render(
               <Route index element={<Login />} />
               <Route path='/users' element={<ProtectedRoute><Users /></ProtectedRoute>} />
               <Route path='/users/:id' element={<ProtectedRoute><User /> </ProtectedRoute>} />
+              <Route path='*' element={<ErrorPage />} />
             </Route>
           </Routes>
         </BrowserRouter>

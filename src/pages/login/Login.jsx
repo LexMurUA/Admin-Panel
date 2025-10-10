@@ -41,17 +41,17 @@ export const Login = () => {
   }
 
   return (
-    <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
+    <form className="container login-form" onSubmit={handleSubmit(onSubmit)}>
 
       <label htmlFor="login">Login</label>
-      <Input id="login"{...register('login', { required: 'Введите логин' })} placeholder='Введіть 1' />
+      <Input className='input-mui' id="login"{...register('login', { required: 'Введите логин' })} placeholder='Введіть 1' />
       {errors.login && <div className="error">{errors.login.message}</div>}
 
       <label htmlFor="password">Password</label>
-      <Input id="password" type="password"{...register('password', { required: 'Введите пароль' })} placeholder='Введіть 1' />
+      <Input className='input-mui' id="password" type="password"{...register('password', { required: 'Введите пароль' })} placeholder='Введіть 1' />
       {errors.password && <div className="error">{errors.password.message}</div>}
 
-      <Button type="submit" color="warning" disabled={isSubmitting}>Войти</Button>
+      <Button type="submit" color="warning" disabled={isSubmitting}>Увійти</Button>
       {message && (
         <div className={message.type === 'error' ? 'error' : 'success'}>{message.text}</div>
       )}
